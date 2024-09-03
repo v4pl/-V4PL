@@ -114,7 +114,6 @@
     <script>
         const numberOfDots = 100; // Number of stars/snowflakes
         const maxFallSpeed = 2; // Maximum speed of falling dots
-        let mouseX = window.innerWidth / 2; // Initial mouse position
 
         // Function to generate random number within a range
         function random(min, max) {
@@ -169,8 +168,7 @@
 
         // Function to handle mouse move for direction effect
         document.addEventListener('mousemove', function(event) {
-            mouseX = event.clientX;
-
+            const mouseX = event.clientX; // Get mouse X position
             const centerX = window.innerWidth / 2;
             const rotateY = ((mouseX - centerX) / centerX) * 10; // Calculate rotation based on X position only
 
