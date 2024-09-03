@@ -51,8 +51,10 @@
         .profile-card img.profile-pic {
             width: 110px; /* Slightly increased size */
             height: 110px; /* Slightly increased size */
-            border-radius: 50%;
+            border-radius: 50%; /* Keeps the image circular */
             margin-bottom: 12px; /* Slightly increased margin */
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5); /* Adds a white glow around the border */
+            border: 2px solid white; /* Adds a solid white border */
         }
 
         .profile-card h1 {
@@ -96,7 +98,7 @@
     <div class="profile-card">
         <img src="profile.png" alt="Profile Picture" class="profile-pic">
         <h1>V4PL</h1>
-        <h2>Frontend/Backend Software Developer</h2> <!-- New line added -->
+        <h2>Frontend/Backend Software Developer</h2>
         <div class="icons">
             <a href="https://www.youtube.com/@V4PLMusic" target="_blank">
                 <img src="youtube.svg" alt="YouTube">
@@ -112,7 +114,6 @@
 
     <script>
         const numberOfDots = 100; // Number of stars/snowflakes
-        const parallaxStrength = 0.1; // Adjust this value to change the parallax effect strength
         const maxFallSpeed = 2; // Maximum speed of falling dots
         let mouseX = window.innerWidth / 2; // Initial mouse position
 
@@ -146,26 +147,20 @@
 
         // Function to animate falling dots
         function animateDots() {
-            const centerX = window.innerWidth / 2;
-            const directionFactor = (mouseX - centerX) / centerX; // Determines falling direction based on mouse position
-
             dots.forEach((item) => {
                 const { dot, speed } = item;
                 let currentTop = parseFloat(dot.style.top);
-                let currentLeft = parseFloat(dot.style.left);
 
                 // Update dot position
                 currentTop += speed;
-                currentLeft += directionFactor * speed; // Adjust horizontal position based on falling direction
 
                 // Reset position if dot goes below the viewport
                 if (currentTop > window.innerHeight) {
                     currentTop = random(-window.innerHeight, 0);
-                    currentLeft = random(0, window.innerWidth);
+                    dot.style.left = random(0, window.innerWidth) + 'px';
                 }
 
                 dot.style.top = currentTop + 'px';
-                dot.style.left = currentLeft + 'px';
             });
 
             requestAnimationFrame(animateDots); // Continue the animation
