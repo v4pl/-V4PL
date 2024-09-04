@@ -1,3 +1,27 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000; /* Black background to resemble the night sky */
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Adds perspective for the 3D effect */
+}
+
+.dot {
+    position: absolute;
+    width: 5px; /* Size of the stars/snowflakes */
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none; /* Ensures mouse events pass through the dots */
+}
+
 .profile-card {
     background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
     padding: 22px; /* Slightly increased padding */
@@ -14,7 +38,7 @@
     transform-style: preserve-3d; /* Enables 3D transforms */
 }
 
-.profile-card.hover {
+.profile-card:hover {
     transform: translateZ(20px) rotateX(5deg) rotateY(-5deg) scale(1.1); /* Slight zoom, tilt, and scaling on hover */
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7); /* Stronger glow effect */
 }
@@ -28,50 +52,5 @@
     transition: box-shadow 0.3s; /* Smooth transition for the glow effect */
 }
 
-.profile-card.hover img.profile-pic {
-    box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.8); /* Increased glow effect on hover */
-}
-
-.profile-card h1 {
-    font-size: 30px; /* Increased font size for V4PL */
-    margin: 12px 0; /* Slightly increased margin */
-    color: #ffffff; /* White text color */
-    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee; /* Glowing effect */
-    letter-spacing: 1px; /* Slightly increased spacing for a cleaner look */
-    transition: text-shadow 0.3s; /* Smooth transition for the text shadow effect */
-}
-
-.profile-card.hover h1 {
-    text-shadow: 0 0 15px #e6eeee, 0 0 30px #e6eeee; /* Stronger glow effect on hover */
-}
-
-.profile-card h2 {
-    font-size: 18px; /* Font size for the new line */
-    margin: 8px 0 16px 0; /* Margin around the new line */
-    font-weight: normal; /* Lighter font-weight for distinction */
-    color: #dcdcdc; /* Softer white color for a cleaner look */
-    letter-spacing: 0.5px; /* Slightly increased spacing for a cleaner look */
-}
-
-.profile-card .icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 18px; /* Slightly increased margin */
-}
-
-.profile-card .icons a {
-    margin: 0 12px; /* Slightly increased margin */
-    display: inline-block; /* Ensures the box-shadow affects the element */
-    transition: transform 0.3s; /* Smooth transition for scaling effect */
-}
-
-.profile-card .icons img {
-    width: 32px; /* Slightly increased size */
-    height: 32px; /* Slightly increased size */
-    display: block; /* Removes any extra spacing below the image */
-    transition: transform 0.3s; /* Smooth transition for scaling effect */
-}
-
-.profile-card .icons img:hover {
-    transform: scale(1.1); /* Slightly increased size on hover */
-}
+.profile-card:hover img.profile-pic {
+    box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.
