@@ -14,7 +14,7 @@
     transform-style: preserve-3d; /* Enables 3D transforms */
 }
 
-.profile-card.hovered {
+.profile-card.hover {
     transform: translateZ(20px) rotateX(5deg) rotateY(-5deg) scale(1.1); /* Slight zoom, tilt, and scaling on hover */
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7); /* Stronger glow effect */
 }
@@ -28,7 +28,7 @@
     transition: box-shadow 0.3s; /* Smooth transition for the glow effect */
 }
 
-.profile-card.hovered img.profile-pic {
+.profile-card.hover img.profile-pic {
     box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.8); /* Increased glow effect on hover */
 }
 
@@ -41,7 +41,7 @@
     transition: text-shadow 0.3s; /* Smooth transition for the text shadow effect */
 }
 
-.profile-card.hovered h1 {
+.profile-card.hover h1 {
     text-shadow: 0 0 15px #e6eeee, 0 0 30px #e6eeee; /* Stronger glow effect on hover */
 }
 
