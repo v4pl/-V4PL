@@ -53,4 +53,54 @@ body, html {
 }
 
 .profile-card:hover img.profile-pic {
-    box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.
+    box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.8); /* Increased glow effect on hover */
+}
+
+.profile-card h1 {
+    font-size: 30px; /* Increased font size for V4PL */
+    margin: 12px 0; /* Slightly increased margin */
+    color: #ffffff; /* White text color */
+    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee; /* Glowing effect */
+    letter-spacing: 1px; /* Slightly increased spacing for a cleaner look */
+    transition: text-shadow 0.3s; /* Smooth transition for the text shadow effect */
+}
+
+.profile-card:hover h1 {
+    text-shadow: 0 0 15px #e6eeee, 0 0 30px #e6eeee; /* Stronger glow effect on hover */
+}
+
+.profile-card h2 {
+    font-size: 18px; /* Font size for the new line */
+    margin: 8px 0 16px 0; /* Margin around the new line */
+    font-weight: normal; /* Lighter font-weight for distinction */
+    color: #dcdcdc; /* Softer white color for a cleaner look */
+    letter-spacing: 0.5px; /* Slightly increased spacing for a cleaner look */
+}
+
+.profile-card .icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px; /* Slightly increased margin */
+}
+
+.profile-card .icons a {
+    margin: 0 12px; /* Slightly increased margin */
+    display: inline-block; /* Ensures the box-shadow affects the element */
+    transition: transform 0.3s; /* Smooth transition for scaling effect */
+    position: relative; /* Allows positioning of the glow effect */
+}
+
+.profile-card .icons img {
+    width: 32px; /* Slightly increased size */
+    height: 32px; /* Slightly increased size */
+    display: block; /* Removes any extra spacing below the image */
+    transition: transform 0.3s; /* Smooth transition for scaling effect */
+}
+
+.profile-card .icons a:hover {
+    /* Removed box-shadow for the button hover effect */
+}
+
+.profile-card .icons img:hover {
+    transform: scale(1.1); /* Slightly increased size on hover */
+}
