@@ -87,16 +87,18 @@ body, html {
     margin: 0 12px; /* Slightly increased margin */
     display: inline-block; /* Ensures the box-shadow affects the element */
     transition: box-shadow 0.3s, transform 0.3s; /* Smooth transition for glow and scale effect */
-}
-
-.profile-card .icons a:hover {
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9); /* Brighter and larger glow effect on hover */
+    position: relative; /* Allows positioning of the glow effect */
 }
 
 .profile-card .icons img {
     width: 32px; /* Slightly increased size */
     height: 32px; /* Slightly increased size */
-    transition: transform 0.3s;
+    display: block; /* Removes any extra spacing below the image */
+    transition: transform 0.3s; /* Smooth transition for scaling effect */
+}
+
+.profile-card .icons a:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9); /* Brighter and larger glow effect on hover */
 }
 
 .profile-card .icons img:hover {
