@@ -62,16 +62,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply 3D rotation to the profile card
         document.querySelector('.profile-card').style.transform = `rotateY(${rotateY}deg)`;
     });
-
-    // Handle hover effect with delay
-    const profileCard = document.querySelector('.profile-card');
-    let hoverTimeout;
-
-    profileCard.addEventListener('mouseenter', function() {
-        profileCard.classList.add('hover');
-    });
-
-    profileCard.addEventListener('mouseleave', function() {
-        profileCard.classList.remove('hover');
-    });
 });
