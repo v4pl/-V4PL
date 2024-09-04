@@ -53,21 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animateDots(); // Start the animation
 
-    // Add a class to the profile card when hovered
-    const profileCard = document.querySelector('.profile-card');
-    let hoverTimeout;
-
-    profileCard.addEventListener('mouseenter', function() {
-        hoverTimeout = setTimeout(() => {
-            profileCard.classList.add('hovered');
-        }, 1000); // Delay of 1 second
-    });
-
-    profileCard.addEventListener('mouseleave', function() {
-        clearTimeout(hoverTimeout); // Clear the timeout if mouse leaves before delay
-        profileCard.classList.remove('hovered');
-    });
-
     // Function to handle mouse move for direction effect
     document.addEventListener('mousemove', function(event) {
         const mouseX = event.clientX; // Get mouse X position
@@ -75,6 +60,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const rotateY = ((mouseX - centerX) / centerX) * 10; // Calculate rotation based on X position only
 
         // Apply 3D rotation to the profile card
-        profileCard.style.transform = `rotateY(${rotateY}deg)`;
+        document.querySelector('.profile-card').style.transform = `rotateY(${rotateY}deg)`;
+    });
+
+    // Handle hover effect with delay
+    const profileCard = document.querySelector('.profile-card');
+    let hoverTimeout;
+
+    profileCard.addEventListener('mouseenter', function() {
+        profileCard.classList.add('hover');
+    });
+
+    profileCard.addEventListener('mouseleave', function() {
+        profileCard.classList.remove('hover');
     });
 });
