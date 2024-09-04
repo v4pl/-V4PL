@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const dot = document.createElement('div');
         dot.classList.add('dot');
         
-        // Set random initial position, with some dots starting below the top of the viewport
-        dot.style.left = random(0, window.innerWidth) + 'px';
-        dot.style.top = random(-window.innerHeight, window.innerHeight) + 'px';
+        // Set random initial position
+        dot.style.left = `${random(0, window.innerWidth)}px`;
+        dot.style.top = `${random(-window.innerHeight, window.innerHeight)}px`;
         
         document.body.appendChild(dot);
 
@@ -25,15 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Generate dots
-    const dots = [];
-    for (let i = 0; i < numberOfDots; i++) {
-        dots.push(createDot());
-    }
+    const dots = Array.from({ length: numberOfDots }, createDot);
 
     // Function to animate falling dots
     function animateDots() {
-        dots.forEach((item) => {
-            const { dot, speed } = item;
+        dots.forEach(({ dot, speed }) => {
             let currentTop = parseFloat(dot.style.top);
 
             // Update dot position
@@ -42,16 +38,31 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset position if dot goes below the viewport
             if (currentTop > window.innerHeight) {
                 currentTop = random(-window.innerHeight, 0);
-                dot.style.left = random(0, window.innerWidth) + 'px';
+                dot.style.left = `${random(0, window.innerWidth)}px`;
             }
 
-            dot.style.top = currentTop + 'px';
+            dot.style.top = `${currentTop}px`;
         });
 
         requestAnimationFrame(animateDots); // Continue the animation
     }
 
     animateDots(); // Start the animation
+
+    // Handle hover effect with delay
+    let hoverTimeout;
+    const profileCard = document.querySelector('.profile-card');
+
+    profileCard.addEventListener('mouseenter', function() {
+        hoverTimeout = setTimeout(() => {
+            profileCard.classList.add('hover');
+        }, 500); // 0.5-second delay
+    });
+
+    profileCard.addEventListener('mouseleave', function() {
+        clearTimeout(hoverTimeout);
+        profileCard.classList.remove('hover');
+    });
 
     // Function to handle mouse move for direction effect
     document.addEventListener('mousemove', function(event) {
@@ -60,6 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const rotateY = ((mouseX - centerX) / centerX) * 10; // Calculate rotation based on X position only
 
         // Apply 3D rotation to the profile card
-        document.querySelector('.profile-card').style.transform = `rotateY(${rotateY}deg)`;
+        profileCard.style.transform = `rotateY(${rotateY}deg)`;
     });
 });
