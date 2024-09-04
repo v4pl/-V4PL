@@ -30,15 +30,13 @@ body, html {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7); /* Glowing effect */
     width: 500px; /* Increased width to make the card longer horizontally */
     height: 300px; /* Adjust height if necessary */
-    z-index: 1;
-    border: 2px solid rgba(255, 255, 255, 0.5); /* White border with 50% opacity */
     position: relative; /* Allows positioning */
     top: -50px; /* Moves the card up by 50px */
-    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s; /* Smooth transitions for scale, rotation, glow, and hover effect */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
     transform-style: preserve-3d; /* Enables 3D transforms */
 }
 
-.profile-card:hover {
+.profile-card.hover {
     transform: translateZ(20px) rotateX(5deg) rotateY(-5deg) scale(1.1); /* Slight zoom, tilt, and scaling on hover */
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7); /* Stronger glow effect */
 }
@@ -48,12 +46,12 @@ body, html {
     height: 110px; /* Slightly increased size */
     border-radius: 50%; /* Keeps the image circular */
     margin-bottom: 12px; /* Slightly increased margin */
-    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5); /* Adds a white glow around the border */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Adds a white glow around the border */
     transition: box-shadow 0.3s; /* Smooth transition for the glow effect */
 }
 
-.profile-card:hover img.profile-pic {
-    box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.8); /* Increased glow effect on hover */
+.profile-card.hover img.profile-pic {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); /* Increased glow effect on hover */
 }
 
 .profile-card h1 {
@@ -65,7 +63,7 @@ body, html {
     transition: text-shadow 0.3s; /* Smooth transition for the text shadow effect */
 }
 
-.profile-card:hover h1 {
+.profile-card.hover h1 {
     text-shadow: 0 0 15px #e6eeee, 0 0 30px #e6eeee; /* Stronger glow effect on hover */
 }
 
@@ -87,7 +85,6 @@ body, html {
     margin: 0 12px; /* Slightly increased margin */
     display: inline-block; /* Ensures the box-shadow affects the element */
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for scaling and shadow effect */
-    position: relative; /* Allows positioning of the glow effect */
 }
 
 .profile-card .icons img {
