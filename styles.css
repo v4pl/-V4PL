@@ -90,7 +90,7 @@ body, html {
 }
 
 .profile-card .icons a:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Circular glow effect on hover */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9); /* Brighter and larger glow effect on hover */
 }
 
 .profile-card .icons img {
