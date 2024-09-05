@@ -1,4 +1,4 @@
-// JavaScript to hide the loading screen after a 2-second delay
+// JavaScript to hide the loading screen after a 3-second delay
 window.addEventListener('load', function() {
     const loadingScreen = document.getElementById('loading');
     if (loadingScreen) {
