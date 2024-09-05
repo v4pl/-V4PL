@@ -3,14 +3,15 @@ window.addEventListener('load', function() {
     const loadingScreen = document.getElementById('loading');
     if (loadingScreen) {
         setTimeout(function() {
-            loadingScreen.style.opacity = '0'; // Fade out effect
+            loadingScreen.style.opacity = '0'; // Start fade-out effect
             setTimeout(function() {
-                loadingScreen.style.display = 'none'; // Remove from the DOM after fade out
-            }, 500); // Delay to match the fade out duration
-        }, 2000); // 2000 milliseconds = 2 seconds
+                loadingScreen.style.display = 'none'; // Hide after fade-out
+            }, 500); // Match with CSS transition duration
+        }, 2000); // 2 seconds delay before fade-out
     }
 });
 
+// JavaScript to handle snowflakes animation
 document.addEventListener('DOMContentLoaded', function() {
     const numberOfDots = 100; // Number of stars/snowflakes
     const maxFallSpeed = 2; // Maximum speed of falling dots
@@ -21,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to create a dot
-    function createSnowflake() {
+    function createDot() {
         const dot = document.createElement('div');
-        dot.classList.add('snowflake'); // Changed class name to 'snowflake'
+        dot.classList.add('snowflake'); // Use 'snowflake' class for dots
         
         // Set random initial position
         dot.style.left = `${random(0, window.innerWidth)}px`;
@@ -37,12 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return { dot, speed };
     }
 
-    // Generate snowflakes
-    const snowflakes = Array.from({ length: numberOfDots }, createSnowflake);
+    // Generate dots
+    const dots = Array.from({ length: numberOfDots }, createDot);
 
-    // Function to animate falling snowflakes
-    function animateSnowflakes() {
-        snowflakes.forEach(({ dot, speed }) => {
+    // Function to animate falling dots
+    function animateDots() {
+        dots.forEach(({ dot, speed }) => {
             let currentTop = parseFloat(dot.style.top);
 
             // Update dot position
@@ -57,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.style.top = `${currentTop}px`;
         });
 
-        requestAnimationFrame(animateSnowflakes); // Continue the animation
+        requestAnimationFrame(animateDots); // Continue the animation
     }
 
-    animateSnowflakes(); // Start the animation
+    animateDots(); // Start the animation
 
     // Handle hover effect with delay
     let hoverTimeout;
