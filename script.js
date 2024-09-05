@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
             setTimeout(function() {
                 loadingScreen.style.display = 'none'; // Hide after fade-out
             }, 500); // Match with CSS transition duration
-        }, 2000); // 2 seconds delay before fade-out
+        }, 3000); // 2 seconds delay before fade-out
     }
 });
 
