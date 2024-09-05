@@ -1,3 +1,59 @@
+/* CSS for loading animation */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black; /* Black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensures the loading screen is on top */
+    opacity: 1; /* Initial opacity */
+    transition: opacity 0.5s ease-out; /* Fade-out transition */
+}
+
+.loading .dot {
+    width: 15px;
+    height: 15px;
+    background-color: white; /* White dots */
+    border-radius: 50%;
+    margin: 0 5px;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+.loading .dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.loading .dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* CSS for snowflakes (falling dots) */
+.snowflake {
+    position: absolute;
+    width: 5px; /* Size of the snowflakes */
+    height: 5px;
+    background-color: white; /* White snowflakes */
+    border-radius: 50%;
+    pointer-events: none; /* Ensures mouse events pass through the snowflakes */
+}
+
+/* General styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -13,15 +69,6 @@ body, html {
     perspective: 1000px; /* Adds perspective for the 3D effect */
 }
 
-.dot {
-    position: absolute;
-    width: 5px; /* Size of the stars/snowflakes */
-    height: 5px;
-    background-color: white;
-    border-radius: 50%;
-    pointer-events: none; /* Ensures mouse events pass through the dots */
-}
-
 .profile-card {
     background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
     padding: 22px; /* Slightly increased padding */
@@ -31,9 +78,17 @@ body, html {
     width: 500px; /* Increased width to make the card longer horizontally */
     height: 300px; /* Adjust height if necessary */
     position: relative; /* Allows positioning */
-    top: -50px; /* Moves the card up by 50px */
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
     transform-style: preserve-3d; /* Enables 3D transforms */
+    margin: auto; /* Centers the card horizontally */
+}
+
+/* Adjust for vertical centering */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
 }
 
 .profile-card.hover {
