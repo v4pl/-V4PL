@@ -1,3 +1,16 @@
+// JavaScript to hide the loading screen after a 2-second delay
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loading');
+    if (loadingScreen) {
+        setTimeout(function() {
+            loadingScreen.style.opacity = '0'; // Fade out effect
+            setTimeout(function() {
+                loadingScreen.style.display = 'none'; // Remove from the DOM after fade out
+            }, 500); // Delay to match the fade out duration
+        }, 2000); // 2000 milliseconds = 2 seconds
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const numberOfDots = 100; // Number of stars/snowflakes
     const maxFallSpeed = 2; // Maximum speed of falling dots
@@ -8,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to create a dot
-    function createDot() {
+    function createSnowflake() {
         const dot = document.createElement('div');
-        dot.classList.add('dot');
+        dot.classList.add('snowflake'); // Changed class name to 'snowflake'
         
         // Set random initial position
         dot.style.left = `${random(0, window.innerWidth)}px`;
@@ -24,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return { dot, speed };
     }
 
-    // Generate dots
-    const dots = Array.from({ length: numberOfDots }, createDot);
+    // Generate snowflakes
+    const snowflakes = Array.from({ length: numberOfDots }, createSnowflake);
 
-    // Function to animate falling dots
-    function animateDots() {
-        dots.forEach(({ dot, speed }) => {
+    // Function to animate falling snowflakes
+    function animateSnowflakes() {
+        snowflakes.forEach(({ dot, speed }) => {
             let currentTop = parseFloat(dot.style.top);
 
             // Update dot position
@@ -44,10 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.style.top = `${currentTop}px`;
         });
 
-        requestAnimationFrame(animateDots); // Continue the animation
+        requestAnimationFrame(animateSnowflakes); // Continue the animation
     }
 
-    animateDots(); // Start the animation
+    animateSnowflakes(); // Start the animation
 
     // Handle hover effect with delay
     let hoverTimeout;
