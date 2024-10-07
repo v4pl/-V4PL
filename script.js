@@ -1,18 +1,19 @@
-// JavaScript to hide the loading screen after a 3-second delay
-window.addEventListener('load', function() {
-    const loadingScreen = document.getElementById('loading');
-    if (loadingScreen) {
-        setTimeout(function() {
-            loadingScreen.style.opacity = '0'; // Start fade-out effect
-            setTimeout(function() {
-                loadingScreen.style.display = 'none'; // Hide after fade-out
-            }, 500); // Match with CSS transition duration
-        }, 3000); // 2 seconds delay before fade-out
-    }
-});
-
-// JavaScript to handle snowflakes animation
+// Typing effect for the name
 document.addEventListener('DOMContentLoaded', function() {
+    const text = 'ᐯ4卩ㄥ®'; // Text to display
+    const typingElement = document.querySelector('.typing');
+    
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            typingElement.innerHTML += text.charAt(i); // Add one character at a time
+            i++;
+            setTimeout(type, 200); // Adjust speed by changing the delay
+        }
+    }
+    type(); // Start the typing animation
+
+    // Snowflakes animation
     const numberOfDots = 100; // Number of stars/snowflakes
     const maxFallSpeed = 2; // Maximum speed of falling dots
 
@@ -87,4 +88,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply 3D rotation to the profile card
         profileCard.style.transform = `rotateY(${rotateY}deg)`;
     });
+});
+
+// Hide loading screen after a delay
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loading');
+    if (loadingScreen) {
+        setTimeout(function() {
+            loadingScreen.style.opacity = '0'; // Start fade-out effect
+            setTimeout(function() {
+                loadingScreen.style.display = 'none'; // Hide after fade-out
+            }, 500); // Match with CSS transition duration
+        }, 3000); // Delay before fade-out
+    }
 });
