@@ -88,35 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
         profileCard.style.transform = `rotateY(${rotateY}deg)`;
     });
 
-    // Typing animation
-    const textArray = ["Hello!", "Welcome to my website!", "Enjoy your stay!"];
-    let textIndex = 0;
-    let charIndex = 0;
+    // Typing animation for username
+    const username = "ᐯ4卩ㄥ®";
     const typingElement = document.querySelector('.typing');
 
     function type() {
-        if (charIndex < textArray[textIndex].length) {
-            typingElement.textContent += textArray[textIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, 100); // Adjust typing speed here
-        } else {
-            // Wait before starting to erase
-            setTimeout(erase, 1000);
-        }
+        typingElement.textContent = username; // Display the username
     }
 
-    function erase() {
-        if (charIndex > 0) {
-            typingElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, 50); // Adjust erasing speed here
-        } else {
-            // Move to the next text
-            textIndex++;
-            if (textIndex >= textArray.length) textIndex = 0; // Loop back to the start
-            setTimeout(type, 500); // Wait before typing the next text
-        }
-    }
-
-    type(); // Start typing
+    type(); // Call the type function to display the username
 });
