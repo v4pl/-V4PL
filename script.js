@@ -1,19 +1,18 @@
-// Typing effect for the name
-document.addEventListener('DOMContentLoaded', function() {
-    const text = 'ᐯ4卩ㄥ®'; // Text to display
-    const typingElement = document.querySelector('.typing');
-    
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            typingElement.innerHTML += text.charAt(i); // Add one character at a time
-            i++;
-            setTimeout(type, 200); // Adjust speed by changing the delay
-        }
+// JavaScript to hide the loading screen after a 3-second delay
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loading');
+    if (loadingScreen) {
+        setTimeout(function() {
+            loadingScreen.style.opacity = '0'; // Start fade-out effect
+            setTimeout(function() {
+                loadingScreen.style.display = 'none'; // Hide after fade-out
+            }, 500); // Match with CSS transition duration
+        }, 3000); // 3 seconds delay before fade-out
     }
-    type(); // Start the typing animation
+});
 
-    // Snowflakes animation
+// JavaScript to handle snowflakes animation
+document.addEventListener('DOMContentLoaded', function() {
     const numberOfDots = 100; // Number of stars/snowflakes
     const maxFallSpeed = 2; // Maximum speed of falling dots
 
@@ -88,17 +87,36 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply 3D rotation to the profile card
         profileCard.style.transform = `rotateY(${rotateY}deg)`;
     });
-});
 
-// Hide loading screen after a delay
-window.addEventListener('load', function() {
-    const loadingScreen = document.getElementById('loading');
-    if (loadingScreen) {
-        setTimeout(function() {
-            loadingScreen.style.opacity = '0'; // Start fade-out effect
-            setTimeout(function() {
-                loadingScreen.style.display = 'none'; // Hide after fade-out
-            }, 500); // Match with CSS transition duration
-        }, 3000); // Delay before fade-out
+    // Typing animation
+    const textArray = ["Hello!", "Welcome to my website!", "Enjoy your stay!"];
+    let textIndex = 0;
+    let charIndex = 0;
+    const typingElement = document.querySelector('.typing');
+
+    function type() {
+        if (charIndex < textArray[textIndex].length) {
+            typingElement.textContent += textArray[textIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100); // Adjust typing speed here
+        } else {
+            // Wait before starting to erase
+            setTimeout(erase, 1000);
+        }
     }
+
+    function erase() {
+        if (charIndex > 0) {
+            typingElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, 50); // Adjust erasing speed here
+        } else {
+            // Move to the next text
+            textIndex++;
+            if (textIndex >= textArray.length) textIndex = 0; // Loop back to the start
+            setTimeout(type, 500); // Wait before typing the next text
+        }
+    }
+
+    type(); // Start typing
 });
