@@ -1,23 +1,23 @@
-/* CSS for loading animation */
+/* Loading animation */
 .loading {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: black; /* Black background */
+    background: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Ensures the loading screen is on top */
-    opacity: 1; /* Initial opacity */
-    transition: opacity 0.5s ease-out; /* Fade-out transition */
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
 }
 
 .loading .dot {
     width: 15px;
     height: 15px;
-    background-color: white; /* White dots */
+    background-color: white;
     border-radius: 50%;
     margin: 0 5px;
     animation: bounce 1.5s infinite ease-in-out;
@@ -43,14 +43,14 @@
     }
 }
 
-/* CSS for snowflakes (falling dots) */
+/* Snowflakes */
 .snowflake {
     position: absolute;
-    width: 5px; /* Size of the snowflakes */
+    width: 5px;
     height: 5px;
-    background-color: white; /* White snowflakes */
+    background-color: white;
     border-radius: 50%;
-    pointer-events: none; /* Ensures mouse events pass through the snowflakes */
+    pointer-events: none;
 }
 
 /* General styles */
@@ -60,98 +60,65 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: #000; /* Black background to resemble the night sky */
+    background-color: #000; /* Black background */
     font-family: Arial, sans-serif;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px; /* Adds perspective for the 3D effect */
+    perspective: 1000px;
 }
 
 .profile-card {
-    background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
-    padding: 22px;
-    border-radius: 0; /* Remove border-radius to make corners rectangular */
+    background-color: rgba(0, 0, 0, 0.7); /* Black background */
+    padding: 20px;
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7); /* Glowing effect */
-    width: 500px; /* Increased width */
-    height: 300px; /* Adjust height */
-    position: relative; /* Allows positioning */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
-    transform-style: preserve-3d; /* Enables 3D transforms */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7);
+    width: 500px;
+    height: 300px;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    transform-style: preserve-3d;
     margin: auto;
 }
 
-.profile-card.hover {
-    transform: translateZ(20px) rotateX(5deg) rotateY(-5deg) scale(1.1); /* Slight zoom, tilt, and scaling on hover */
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7); /* Stronger glow effect */
+.profile-card h1 {
+    font-size: 30px;
+    margin: 12px 0;
+    color: #ffffff;
+    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee;
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s;
+}
+
+/* Styling for typed text */
+#typed-text {
+    font-size: 18px;
+    color: #dcdcdc;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid; /* Cursor effect */
+    width: 20ch;
+    animation: typing 4s steps(20, end), blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 20ch; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
 }
 
 .profile-card img.profile-pic {
-    width: 110px; /* Slightly increased size */
-    height: 110px; /* Slightly increased size */
-    border-radius: 50%; /* Keeps the image circular */
-    margin-bottom: 12px; /* Slightly increased margin */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Adds a white glow around the border */
-    transition: box-shadow 0.3s; /* Smooth transition for the glow effect */
-}
-
-.profile-card.hover img.profile-pic {
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); /* Increased glow effect on hover */
-}
-
-.profile-card h1 {
-    font-size: 30px; /* Font size for ᐯ4卩ㄥ® */
-    margin: 12px 0;
-    color: #ffffff;
-    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee; /* Glowing effect */
-    letter-spacing: 1px;
-    transition: text-shadow 0.3s; /* Smooth transition for the text shadow effect */
-}
-
-.profile-card.hover h1 {
-    text-shadow: 0 0 15px #e6eeee, 0 0 30px #e6eeee; /* Stronger glow effect on hover */
-}
-
-.profile-card h2 {
-    font-size: 18px;
-    margin: 8px 0 16px 0;
-    font-weight: normal;
-    color: #dcdcdc;
-    letter-spacing: 0.5px;
-}
-
-.profile-card .icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 18px;
-}
-
-.profile-card .icons a {
-    margin: 0 12px;
-    display: inline-block;
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for scaling and shadow effect */
-}
-
-.profile-card .icons img {
-    width: 32px;
-    height: 32px;
-    display: block;
-    transition: transform 0.3s; /* Smooth transition for scaling effect */
-}
-
-.profile-card .icons a:hover {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Slightly smaller glow effect on hover */
-}
-
-.profile-card .icons img:hover {
-    transform: scale(1.3); /* Slightly increased size on hover */
-}
-
-/* Style for the text being typed */
-#typed-text {
-    font-size: 30px; /* Match the size of your username */
-    letter-spacing: 1px; /* Adjust spacing for aesthetic */
-    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee; /* Glowing effect */
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
