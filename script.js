@@ -1,39 +1,34 @@
-// JavaScript to hide the loading screen after a 3-second delay
+// Wait for the page to load
 window.addEventListener('load', function() {
+    // Loading screen logic
     const loadingScreen = document.getElementById('loading');
     if (loadingScreen) {
         setTimeout(function() {
             loadingScreen.style.opacity = '0'; // Start fade-out effect
             setTimeout(function() {
                 loadingScreen.style.display = 'none'; // Hide after fade-out
-                startTypingEffect(); // Start the typing effect after the loading screen is hidden
+                typeWriter(); // Start typing after loading is done
             }, 500); // Match with CSS transition duration
-        }, 3000); // 3 seconds delay before fade-out
+        }, 3000); // Delay before fade-out
     }
 });
 
-// Typing effect for the username "ᐯ4卩ㄥ®"
-function startTypingEffect() {
-    const text = "ᐯ4卩ㄥ®";
-    const typingSpeed = 150; // Delay between each character
+// Typing effect for "FrontEnd/BackEnd Software Developer"
+const textToType = "FrontEnd/BackEnd Software Developer";
+let index = 0;
+const speed = 100; // Adjust typing speed (in milliseconds)
 
-    let index = 0;
-    const typedTextElement = document.getElementById('typed-text');
-
-    function typeCharacter() {
-        if (index < text.length) {
-            typedTextElement.textContent += text.charAt(index);
-            index++;
-            setTimeout(typeCharacter, typingSpeed);
-        } else {
-            typedTextElement.textContent = text; // Ensure full text is displayed after typing
-        }
+function typeWriter() {
+    if (index < textToType.length) {
+        document.getElementById('typed-text').innerHTML += textToType.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+    } else {
+        document.getElementById('typed-text').classList.add('finished'); // Add class when typing is done
     }
-
-    setTimeout(typeCharacter, 500); // Start typing after a slight delay (0.5s)
 }
 
-// JavaScript to handle snowflakes animation
+// Snowflake Animation
 document.addEventListener('DOMContentLoaded', function() {
     const numberOfDots = 100; // Number of stars/snowflakes
     const maxFallSpeed = 2; // Maximum speed of falling dots
@@ -43,20 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
         return Math.random() * (max - min) + min;
     }
 
-    // Function to create a dot
+    // Function to create a dot (snowflake)
     function createDot() {
         const dot = document.createElement('div');
         dot.classList.add('snowflake'); // Use 'snowflake' class for dots
-        
-        // Set random initial position
         dot.style.left = `${random(0, window.innerWidth)}px`;
         dot.style.top = `${random(-window.innerHeight, window.innerHeight)}px`;
-        
         document.body.appendChild(dot);
 
-        // Random speed for vertical movement
         const speed = random(0.5, maxFallSpeed);
-
         return { dot, speed };
     }
 
@@ -67,11 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateDots() {
         dots.forEach(({ dot, speed }) => {
             let currentTop = parseFloat(dot.style.top);
-
-            // Update dot position
             currentTop += speed;
 
-            // Reset position if dot goes below the viewport
             if (currentTop > window.innerHeight) {
                 currentTop = random(-window.innerHeight, 0);
                 dot.style.left = `${random(0, window.innerWidth)}px`;
@@ -79,34 +66,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
             dot.style.top = `${currentTop}px`;
         });
-
         requestAnimationFrame(animateDots); // Continue the animation
     }
 
     animateDots(); // Start the animation
+});
 
-    // Handle hover effect with delay
-    let hoverTimeout;
-    const profileCard = document.querySelector('.profile-card');
+// Profile card hover effects
+let hoverTimeout;
+const profileCard = document.querySelector('.profile-card');
 
-    profileCard.addEventListener('mouseenter', function() {
-        hoverTimeout = setTimeout(() => {
-            profileCard.classList.add('hover');
-        }, 500); // 0.5-second delay
-    });
+profileCard.addEventListener('mouseenter', function() {
+    hoverTimeout = setTimeout(() => {
+        profileCard.classList.add('hover');
+    }, 500); // Delay before hover effect
+});
 
-    profileCard.addEventListener('mouseleave', function() {
-        clearTimeout(hoverTimeout);
-        profileCard.classList.remove('hover');
-    });
+profileCard.addEventListener('mouseleave', function() {
+    clearTimeout(hoverTimeout);
+    profileCard.classList.remove('hover');
+});
 
-    // Function to handle mouse move for direction effect
-    document.addEventListener('mousemove', function(event) {
-        const mouseX = event.clientX; // Get mouse X position
-        const centerX = window.innerWidth / 2;
-        const rotateY = ((mouseX - centerX) / centerX) * 10; // Calculate rotation based on X position only
-
-        // Apply 3D rotation to the profile card
-        profileCard.style.transform = `rotateY(${rotateY}deg)`;
-    });
+// Mouse movement effect for 3D rotation
+document.addEventListener('mousemove', function(event) {
+    const mouseX = event.clientX; // Get mouse X position
+    const centerX = window.innerWidth / 2;
+    const rotateY = ((mouseX - centerX) / centerX) * 10; // Calculate rotation based on X position
+    profileCard.style.transform = `rotateY(${rotateY}deg)`; // Apply rotation
 });
