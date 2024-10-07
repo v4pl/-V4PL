@@ -71,24 +71,16 @@ body, html {
 
 .profile-card {
     background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
-    padding: 20px;
-    border-radius: 10px; /* Rounded corners */
+    padding: 22px;
+    border-radius: 0; /* Remove border-radius to make corners rectangular */
     text-align: center;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7); /* Glowing effect */
-    width: 400px;
-    height: 250px;
+    width: 500px; /* Increased width */
+    height: 300px; /* Adjust height */
     position: relative; /* Allows positioning */
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
     transform-style: preserve-3d; /* Enables 3D transforms */
     margin: auto;
-}
-
-/* Adjust for vertical centering */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
 }
 
 .profile-card.hover {
@@ -97,10 +89,10 @@ body {
 }
 
 .profile-card img.profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    width: 110px; /* Slightly increased size */
+    height: 110px; /* Slightly increased size */
+    border-radius: 50%; /* Keeps the image circular */
+    margin-bottom: 12px; /* Slightly increased margin */
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Adds a white glow around the border */
     transition: box-shadow 0.3s; /* Smooth transition for the glow effect */
 }
@@ -111,7 +103,7 @@ body {
 
 .profile-card h1 {
     font-size: 30px; /* Font size for ᐯ4卩ㄥ® */
-    margin: 10px 0;
+    margin: 12px 0;
     color: #ffffff;
     text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee; /* Glowing effect */
     letter-spacing: 1px;
@@ -123,7 +115,7 @@ body {
 }
 
 .profile-card h2 {
-    font-size: 16px;
+    font-size: 18px;
     margin: 8px 0 16px 0;
     font-weight: normal;
     color: #dcdcdc;
@@ -133,18 +125,18 @@ body {
 .profile-card .icons {
     display: flex;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 18px;
 }
 
 .profile-card .icons a {
-    margin: 0 10px;
+    margin: 0 12px;
     display: inline-block;
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for scaling and shadow effect */
 }
 
 .profile-card .icons img {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     display: block;
     transition: transform 0.3s; /* Smooth transition for scaling effect */
 }
@@ -154,10 +146,10 @@ body {
 }
 
 .profile-card .icons img:hover {
-    transform: scale(1.2); /* Slightly increased size on hover */
+    transform: scale(1.3); /* Slightly increased size on hover */
 }
 
-/* Optional: Style for the text being typed */
+/* Style for the text being typed */
 #typed-text {
     font-size: 30px; /* Match the size of your username */
     letter-spacing: 1px; /* Adjust spacing for aesthetic */
