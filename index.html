@@ -23,6 +23,36 @@
         <h2 id="typed-text"></h2> <!-- Placeholder for typing effect -->
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Wait for the page to load
+        window.addEventListener('load', function() {
+            // Add delay before starting the typing effect after loading animation
+            const loadingScreen = document.getElementById('loading');
+            if (loadingScreen) {
+                setTimeout(function() {
+                    loadingScreen.style.opacity = '0'; // Start fade-out effect
+                    setTimeout(function() {
+                        loadingScreen.style.display = 'none'; // Hide after fade-out
+                        typeWriter(); // Start typing after loading is done
+                    }, 500); // Match with CSS transition duration
+                }, 3000); // Delay before fade-out
+            }
+        });
+
+        // Typing effect code
+        const textToType = "FrontEnd/BackEnd Software Developer";
+        let index = 0;
+        const speed = 100; // Adjust typing speed (in milliseconds)
+
+        function typeWriter() {
+            if (index < textToType.length) {
+                document.getElementById('typed-text').innerHTML += textToType.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            } else {
+                document.getElementById('typed-text').classList.add('finished'); // Add class when typing is done
+            }
+        }
+    </script>
 </body>
 </html>
