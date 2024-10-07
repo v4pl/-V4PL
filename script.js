@@ -7,22 +7,39 @@ window.addEventListener('load', function() {
             loadingScreen.style.opacity = '0'; // Start fade-out effect
             setTimeout(function() {
                 loadingScreen.style.display = 'none'; // Hide after fade-out
-                typeWriter(); // Start typing after loading is done
+                startTypingEffect(); // Start typing after loading is done
             }, 500); // Match with CSS transition duration
         }, 3000); // Delay before fade-out
     }
 });
 
-// Typing effect for "FrontEnd/BackEnd Software Developer"
-const textToType = "FrontEnd/BackEnd Software Developer";
+// Typing effect for "ᐯ4卩ㄥ®" username and "FrontEnd/BackEnd Software Developer"
+const username = "ᐯ4卩ㄥ®";
+const developerText = "FrontEnd/BackEnd Software Developer";
 let index = 0;
+let devIndex = 0;
 const speed = 100; // Adjust typing speed (in milliseconds)
 
-function typeWriter() {
-    if (index < textToType.length) {
-        document.getElementById('typed-text').innerHTML += textToType.charAt(index);
+function startTypingEffect() {
+    // Typing effect for username
+    typeUsername();
+}
+
+function typeUsername() {
+    if (index < username.length) {
+        document.getElementById('username').innerHTML += username.charAt(index);
         index++;
-        setTimeout(typeWriter, speed);
+        setTimeout(typeUsername, speed);
+    } else {
+        setTimeout(typeDeveloperText, 1000); // After username, delay then type developer text
+    }
+}
+
+function typeDeveloperText() {
+    if (devIndex < developerText.length) {
+        document.getElementById('typed-text').innerHTML += developerText.charAt(devIndex);
+        devIndex++;
+        setTimeout(typeDeveloperText, speed);
     } else {
         document.getElementById('typed-text').classList.add('finished'); // Add class when typing is done
     }
