@@ -1,51 +1,18 @@
-// Wait for the page to load
+// JavaScript to hide the loading screen after a 3-second delay
 window.addEventListener('load', function() {
-    // Loading screen logic
     const loadingScreen = document.getElementById('loading');
     if (loadingScreen) {
         setTimeout(function() {
             loadingScreen.style.opacity = '0'; // Start fade-out effect
             setTimeout(function() {
                 loadingScreen.style.display = 'none'; // Hide after fade-out
-                startTypingEffect(); // Start typing after loading is done
+                startTypingEffect(); // Start typing effect after loading screen
             }, 500); // Match with CSS transition duration
-        }, 3000); // Delay before fade-out
+        }, 3000); // 3 seconds delay before fade-out
     }
 });
 
-// Typing effect for "ᐯ4卩ㄥ®" username and "FrontEnd/BackEnd Software Developer"
-const username = "ᐯ4卩ㄥ®";
-const developerText = "FrontEnd/BackEnd Software Developer";
-let index = 0;
-let devIndex = 0;
-const speed = 100; // Adjust typing speed (in milliseconds)
-
-function startTypingEffect() {
-    // Typing effect for username
-    typeUsername();
-}
-
-function typeUsername() {
-    if (index < username.length) {
-        document.getElementById('username').innerHTML += username.charAt(index);
-        index++;
-        setTimeout(typeUsername, speed);
-    } else {
-        setTimeout(typeDeveloperText, 1000); // After username, delay then type developer text
-    }
-}
-
-function typeDeveloperText() {
-    if (devIndex < developerText.length) {
-        document.getElementById('typed-text').innerHTML += developerText.charAt(devIndex);
-        devIndex++;
-        setTimeout(typeDeveloperText, speed);
-    } else {
-        document.getElementById('typed-text').classList.add('finished'); // Add class when typing is done
-    }
-}
-
-// Snowflake Animation
+// JavaScript to handle snowflakes animation
 document.addEventListener('DOMContentLoaded', function() {
     const numberOfDots = 100; // Number of stars/snowflakes
     const maxFallSpeed = 2; // Maximum speed of falling dots
@@ -55,15 +22,20 @@ document.addEventListener('DOMContentLoaded', function() {
         return Math.random() * (max - min) + min;
     }
 
-    // Function to create a dot (snowflake)
+    // Function to create a dot
     function createDot() {
         const dot = document.createElement('div');
         dot.classList.add('snowflake'); // Use 'snowflake' class for dots
+        
+        // Set random initial position
         dot.style.left = `${random(0, window.innerWidth)}px`;
         dot.style.top = `${random(-window.innerHeight, window.innerHeight)}px`;
+        
         document.body.appendChild(dot);
 
+        // Random speed for vertical movement
         const speed = random(0.5, maxFallSpeed);
+
         return { dot, speed };
     }
 
@@ -74,8 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateDots() {
         dots.forEach(({ dot, speed }) => {
             let currentTop = parseFloat(dot.style.top);
+
+            // Update dot position
             currentTop += speed;
 
+            // Reset position if dot goes below the viewport
             if (currentTop > window.innerHeight) {
                 currentTop = random(-window.innerHeight, 0);
                 dot.style.left = `${random(0, window.innerWidth)}px`;
@@ -83,31 +58,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
             dot.style.top = `${currentTop}px`;
         });
+
         requestAnimationFrame(animateDots); // Continue the animation
     }
 
     animateDots(); // Start the animation
+
+    // Hover effect with delay on profile card
+    let hoverTimeout;
+    const profileCard = document.querySelector('.profile-card');
+
+    profileCard.addEventListener('mouseenter', function() {
+        hoverTimeout = setTimeout(() => {
+            profileCard.classList.add('hover');
+        }, 500); // 0.5-second delay
+    });
+
+    profileCard.addEventListener('mouseleave', function() {
+        clearTimeout(hoverTimeout);
+        profileCard.classList.remove('hover');
+    });
+
+    // 3D rotation effect on profile card based on mouse move
+    document.addEventListener('mousemove', function(event) {
+        const mouseX = event.clientX;
+        const centerX = window.innerWidth / 2;
+        const rotateY = ((mouseX - centerX) / centerX) * 10; // Rotate based on X position
+
+        profileCard.style.transform = `rotateY(${rotateY}deg)`;
+    });
 });
 
-// Profile card hover effects
-let hoverTimeout;
-const profileCard = document.querySelector('.profile-card');
+// Typing animation effect
+function startTypingEffect() {
+    const usernameElement = document.getElementById('username');
+    const typedTextElement = document.getElementById('typed-text');
 
-profileCard.addEventListener('mouseenter', function() {
-    hoverTimeout = setTimeout(() => {
-        profileCard.classList.add('hover');
-    }, 500); // Delay before hover effect
-});
+    const username = "ᐯ4卩ㄥ®"; // The username text
+    const typedText = "FrontEnd/BackEnd Software Developer"; // The developer title text
 
-profileCard.addEventListener('mouseleave', function() {
-    clearTimeout(hoverTimeout);
-    profileCard.classList.remove('hover');
-});
+    let usernameIndex = 0;
+    let typedIndex = 0;
 
-// Mouse movement effect for 3D rotation
-document.addEventListener('mousemove', function(event) {
-    const mouseX = event.clientX; // Get mouse X position
-    const centerX = window.innerWidth / 2;
-    const rotateY = ((mouseX - centerX) / centerX) * 10; // Calculate rotation based on X position
-    profileCard.style.transform = `rotateY(${rotateY}deg)`; // Apply rotation
-});
+    // Function to simulate typing one character at a time
+    function typeUsername() {
+        if (usernameIndex < username.length) {
+            usernameElement.textContent += username.charAt(usernameIndex);
+            usernameIndex++;
+            setTimeout(typeUsername, 150); // Delay between each character
+        } else {
+            setTimeout(typeDeveloperTitle, 500); // Start typing the developer title after delay
+        }
+    }
+
+    // Function to simulate typing the developer title
+    function typeDeveloperTitle() {
+        if (typedIndex < typedText.length) {
+            typedTextElement.textContent += typedText.charAt(typedIndex);
+            typedIndex++;
+            setTimeout(typeDeveloperTitle, 100); // Delay between each character
+        } else {
+            typedTextElement.classList.add('finished'); // Add class to stop cursor animation when done
+        }
+    }
+
+    typeUsername(); // Start typing the username
+}
