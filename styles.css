@@ -79,7 +79,6 @@ body, html {
     height: 300px; /* Adjust height if necessary */
     position: relative; /* Allows positioning */
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
-    transform-style: preserve-3d; /* Enables 3D transforms */
     margin: auto; /* Centers the card horizontally */
 }
 
@@ -128,6 +127,13 @@ body {
     font-weight: normal; /* Lighter font-weight for distinction */
     color: #dcdcdc; /* Softer white color for a cleaner look */
     letter-spacing: 0.5px; /* Slightly increased spacing for a cleaner look */
+}
+
+.typing {
+    font-size: 24px; /* Font size for the typing effect */
+    margin-top: 10px; /* Space above the typing effect */
+    color: #ffffff; /* Text color */
+    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee; /* Glowing effect for the typing text */
 }
 
 .profile-card .icons {
