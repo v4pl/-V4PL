@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@V4PL</title>
+    <!-- Link to the favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,43 +18,23 @@
         <div class="dot"></div>
     </div>
 
-    <!-- Profile content with typing effect -->
-    <div class="profile-card">
+    <!-- Your main content here -->
+<div class="profile-card">
         <img src="profile.png" alt="Profile Picture" class="profile-pic">
-        <h1>ᐯ4卩ㄥ®</h1>
-        <h2 id="typed-text"></h2> <!-- Placeholder for typing effect -->
+        <h1>V4PL®</h1>
+        <h2>FrontEnd/BackEnd Software Developer</h2>
+        <div class="icons">
+            <a href="https://www.youtube.com/@V4PLMusic" target="_blank">
+                <img src="youtube.svg" alt="YouTube">
+            </a>
+            <a href="https://discord.com/users/996797720754933824" target="_blank">
+                <img src="discord.svg" alt="Discord">
+            </a>
+            <a href="https://open.spotify.com/user/31m5ytkwibvwoery6ai34opywb3u" target="_blank">
+                <img src="spotify.svg" alt="Spotify">
+            </a>
+        </div>
     </div>
-
-    <script>
-        // Wait for the page to load
-        window.addEventListener('load', function() {
-            // Add delay before starting the typing effect after loading animation
-            const loadingScreen = document.getElementById('loading');
-            if (loadingScreen) {
-                setTimeout(function() {
-                    loadingScreen.style.opacity = '0'; // Start fade-out effect
-                    setTimeout(function() {
-                        loadingScreen.style.display = 'none'; // Hide after fade-out
-                        typeWriter(); // Start typing after loading is done
-                    }, 500); // Match with CSS transition duration
-                }, 3000); // Delay before fade-out
-            }
-        });
-
-        // Typing effect code
-        const textToType = "FrontEnd/BackEnd Software Developer";
-        let index = 0;
-        const speed = 100; // Adjust typing speed (in milliseconds)
-
-        function typeWriter() {
-            if (index < textToType.length) {
-                document.getElementById('typed-text').innerHTML += textToType.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
-            } else {
-                document.getElementById('typed-text').classList.add('finished'); // Add class when typing is done
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
