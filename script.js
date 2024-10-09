@@ -6,9 +6,8 @@ window.addEventListener('load', function() {
             loadingScreen.style.opacity = '0'; // Start fade-out effect
             setTimeout(function() {
                 loadingScreen.style.display = 'none'; // Hide after fade-out
-                startTypingEffect(); // Start typing effect after loading screen
             }, 500); // Match with CSS transition duration
-        }, 3000); // 3 seconds delay before fade-out
+        }, 3000); // 2 seconds delay before fade-out
     }
 });
 
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animateDots(); // Start the animation
 
-    // Hover effect with delay on profile card
+    // Handle hover effect with delay
     let hoverTimeout;
     const profileCard = document.querySelector('.profile-card');
 
@@ -79,48 +78,13 @@ document.addEventListener('DOMContentLoaded', function() {
         profileCard.classList.remove('hover');
     });
 
-    // 3D rotation effect on profile card based on mouse move
+    // Function to handle mouse move for direction effect
     document.addEventListener('mousemove', function(event) {
-        const mouseX = event.clientX;
+        const mouseX = event.clientX; // Get mouse X position
         const centerX = window.innerWidth / 2;
-        const rotateY = ((mouseX - centerX) / centerX) * 10; // Rotate based on X position
+        const rotateY = ((mouseX - centerX) / centerX) * 10; // Calculate rotation based on X position only
 
+        // Apply 3D rotation to the profile card
         profileCard.style.transform = `rotateY(${rotateY}deg)`;
     });
 });
-
-// Typing animation effect
-function startTypingEffect() {
-    const usernameElement = document.getElementById('username');
-    const typedTextElement = document.getElementById('typed-text');
-
-    const username = "ᐯ4卩ㄥ®"; // The username text
-    const typedText = "FrontEnd/BackEnd Software Developer"; // The developer title text
-
-    let usernameIndex = 0;
-    let typedIndex = 0;
-
-    // Function to simulate typing one character at a time
-    function typeUsername() {
-        if (usernameIndex < username.length) {
-            usernameElement.textContent += username.charAt(usernameIndex);
-            usernameIndex++;
-            setTimeout(typeUsername, 150); // Delay between each character
-        } else {
-            setTimeout(typeDeveloperTitle, 500); // Start typing the developer title after delay
-        }
-    }
-
-    // Function to simulate typing the developer title
-    function typeDeveloperTitle() {
-        if (typedIndex < typedText.length) {
-            typedTextElement.textContent += typedText.charAt(typedIndex);
-            typedIndex++;
-            setTimeout(typeDeveloperTitle, 100); // Delay between each character
-        } else {
-            typedTextElement.classList.add('finished'); // Add class to stop cursor animation when done
-        }
-    }
-
-    typeUsername(); // Start typing the username
-}
