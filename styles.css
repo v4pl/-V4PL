@@ -5,19 +5,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: black;
+    background: black; /* Black background */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
+    z-index: 9999; /* Ensures the loading screen is on top */
+    opacity: 1; /* Initial opacity */
+    transition: opacity 0.5s ease-out; /* Fade-out transition */
 }
 
 .loading .dot {
     width: 15px;
     height: 15px;
-    background-color: white;
+    background-color: white; /* White dots */
     border-radius: 50%;
     margin: 0 5px;
     animation: bounce 1.5s infinite ease-in-out;
@@ -46,11 +46,11 @@
 /* CSS for snowflakes (falling dots) */
 .snowflake {
     position: absolute;
-    width: 5px;
+    width: 5px; /* Size of the snowflakes */
     height: 5px;
-    background-color: white;
+    background-color: white; /* White snowflakes */
     border-radius: 50%;
-    pointer-events: none;
+    pointer-events: none; /* Ensures mouse events pass through the snowflakes */
 }
 
 /* General styles */
@@ -60,126 +60,99 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: #000;
+    background-color: #000; /* Black background to resemble the night sky */
     font-family: Arial, sans-serif;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
+    perspective: 1000px; /* Adds perspective for the 3D effect */
 }
 
 .profile-card {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 22px;
-    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
+    padding: 22px; /* Slightly increased padding */
+    border-radius: 0; /* Remove border-radius to make corners rectangular */
     text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7);
-    width: 500px;
-    height: 300px;
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-    transform-style: preserve-3d;
-    margin: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7); /* Glowing effect */
+    width: 500px; /* Increased width to make the card longer horizontally */
+    height: 300px; /* Adjust height if necessary */
+    position: relative; /* Allows positioning */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    transform-style: preserve-3d; /* Enables 3D transforms */
+    margin: auto; /* Centers the card horizontally */
+}
+
+/* Adjust for vertical centering */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
 }
 
 .profile-card.hover {
-    transform: translateZ(20px) rotateX(5deg) rotateY(-5deg) scale(1.1);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7);
+    transform: translateZ(20px) rotateX(5deg) rotateY(-5deg) scale(1.1); /* Slight zoom, tilt, and scaling on hover */
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7); /* Stronger glow effect */
 }
 
 .profile-card img.profile-pic {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    margin-bottom: 12px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    transition: box-shadow 0.3s;
+    width: 110px; /* Slightly increased size */
+    height: 110px; /* Slightly increased size */
+    border-radius: 50%; /* Keeps the image circular */
+    margin-bottom: 12px; /* Slightly increased margin */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Adds a white glow around the border */
+    transition: box-shadow 0.3s; /* Smooth transition for the glow effect */
 }
 
 .profile-card.hover img.profile-pic {
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); /* Increased glow effect on hover */
 }
 
 .profile-card h1 {
-    font-size: 30px;
-    margin: 12px 0;
-    color: #ffffff;
-    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee;
-    letter-spacing: 1px;
-    transition: text-shadow 0.3s;
+    font-size: 30px; /* Increased font size for V4PL */
+    margin: 12px 0; /* Slightly increased margin */
+    color: #ffffff; /* White text color */
+    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee; /* Glowing effect */
+    letter-spacing: 1px; /* Slightly increased spacing for a cleaner look */
+    transition: text-shadow 0.3s; /* Smooth transition for the text shadow effect */
 }
 
 .profile-card.hover h1 {
-    text-shadow: 0 0 15px #e6eeee, 0 0 30px #e6eeee;
+    text-shadow: 0 0 15px #e6eeee, 0 0 30px #e6eeee; /* Stronger glow effect on hover */
 }
 
 .profile-card h2 {
-    font-size: 18px;
-    margin: 8px 0 16px 0;
-    font-weight: normal;
-    color: #dcdcdc;
-    letter-spacing: 0.5px;
+    font-size: 18px; /* Font size for the new line */
+    margin: 8px 0 16px 0; /* Margin around the new line */
+    font-weight: normal; /* Lighter font-weight for distinction */
+    color: #dcdcdc; /* Softer white color for a cleaner look */
+    letter-spacing: 0.5px; /* Slightly increased spacing for a cleaner look */
 }
 
 .profile-card .icons {
     display: flex;
     justify-content: center;
-    margin-top: 18px;
+    margin-top: 18px; /* Slightly increased margin */
 }
 
 .profile-card .icons a {
-    margin: 0 12px;
-    display: inline-block;
-    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 0 12px; /* Slightly increased margin */
+    display: inline-block; /* Ensures the box-shadow affects the element */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for scaling and shadow effect */
 }
 
 .profile-card .icons img {
-    width: 32px;
-    height: 32px;
-    display: block;
-    transition: transform 0.3s;
+    width: 32px; /* Slightly increased size */
+    height: 32px; /* Slightly increased size */
+    display: block; /* Removes any extra spacing below the image */
+    transition: transform 0.3s; /* Smooth transition for scaling effect */
 }
 
 .profile-card .icons a:hover {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Slightly smaller glow effect on hover */
 }
 
 .profile-card .icons img:hover {
-    transform: scale(1.3);
-}
-
-/* Typing effect */
-#username {
-    font-size: 30px;
-    color: #ffffff;
-    letter-spacing: 1px;
-    text-shadow: 0 0 8px #e6eeee, 0 0 16px #e6eeee;
-    margin: 12px 0;
-}
-
-#typed-text {
-    font-size: 18px;
-    color: #dcdcdc;
-    letter-spacing: 0.5px;
-    margin: 8px 0 16px 0;
-    display: inline-block;
-}
-
-#typed-text.finished::after {
-    content: "";
-    display: none; /* Removes cursor when typing is done */
-}
-
-/* Blinking cursor animation */
-#typed-text::after {
-    content: '|';
-    margin-left: 5px;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+    transform: scale(1.3); /* Slightly increased size on hover */
 }
